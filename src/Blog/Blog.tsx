@@ -50,6 +50,16 @@ const ArrowRight = styled(FaLongArrowAltRight)`
   margin-left: 10px;
 `;
 
+const ImgPattern = styled.img`
+  position: absolute;
+  bottom: 0;
+  right: 0;
+
+  @media only screen and (max-width: 1950px) {
+    display: none;
+  }
+`;
+
 const Blog = () => {
   return (
     <BlogProvider>
@@ -76,6 +86,10 @@ const Blog = () => {
               </Col>
             </RightContent>
           </Row>
+          <ImgPattern
+            src={`${process.env.PUBLIC_URL}/image_pattern.png`}
+            alt="Image Pattern"
+          />
         </Container>
       </AppLayout>
     </BlogProvider>
