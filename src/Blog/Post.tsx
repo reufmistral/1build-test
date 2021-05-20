@@ -11,6 +11,17 @@ const Title = styled.span`
   font-size: 18px;
 `;
 
+const Subtitle = styled.span`
+  ont-family: Open Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 11px;
+  line-height: 40px;
+  color: #757da8;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+`;
+
 const NumberContainer = styled.div`
   border: 1px solid #586cb3;
   border-radius: 2px;
@@ -28,9 +39,19 @@ const Number = styled.span`
 `;
 
 const RowItem = styled(Row)`
-  padding: 2rem 0;
+  padding: 2rem 0 1rem 0;
   align-items: center;
   border-bottom: 1px solid rgba(229, 222, 222, 0.5);
+`;
+
+const RowData = styled(Row)`
+  display: flex;
+  flex-direction: column;
+`;
+
+const Divider = styled.span`
+  margin: 0 3px;
+  font-weigth: bold;
 `;
 
 type PostCompProps = {
@@ -47,7 +68,17 @@ export const Post: FC<PostCompProps> = ({ post, index }) => {
         </NumberContainer>
       </Col>
       <Col xs={11}>
-        <Title>{post.title}</Title>
+        <RowData>
+          <Col>
+            <Title>{post.title}</Title>
+          </Col>
+          <Col style={{ marginTop: "-10px" }}>
+            <Subtitle>
+              {new Date(post.posted).toLocaleDateString()}
+              <Divider>&#183;</Divider> {post.author}
+            </Subtitle>
+          </Col>
+        </RowData>
       </Col>
     </RowItem>
   );
