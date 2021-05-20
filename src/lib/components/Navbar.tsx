@@ -5,7 +5,7 @@ import { Navbar as BootstrapNavbar, Nav, NavDropdown } from "react-bootstrap";
 import { Logo, Button } from "lib/components";
 
 const Container = styled(BootstrapNavbar)`
-  
+  height: 100%;
   padding: 0 1rem;
   @media only screen and (min-width: 2250px) {
     padding: 0 25rem;
@@ -48,7 +48,7 @@ const NavContainer = styled(Nav)`
     border-radius: 10px;
     padding-bottom: 1rem;
     border: 0;
-    box-shadow: 0px 8px 10px 0px #CBBEB5;
+    box-shadow: 0px 8px 10px 0px #cbbeb5;
 
     @media only screen and (max-width: 992px) {
       border: 0px;
