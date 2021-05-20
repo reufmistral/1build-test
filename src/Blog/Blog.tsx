@@ -88,11 +88,13 @@ const Blog = () => {
                   An error occured, failed to retrieve data!
                 </Alert>
               )}
-              {isSuccess && (
-                <Skeleton type="text" ready={!isLoading} firstLaunchOnly={true}>
-                  <Posts posts={result?.posts} />
-                </Skeleton>
-              )}
+              <Skeleton
+                type="text"
+                ready={!isLoading && isSuccess}
+                firstLaunchOnly={true}
+              >
+                <Posts posts={result?.posts} />
+              </Skeleton>
             </Col>
           </RightContent>
         </Row>
