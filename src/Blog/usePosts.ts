@@ -1,13 +1,17 @@
-import { useApi } from "lib/hooks";
+import { useQuery } from "react-query";
+
+import API from "lib/utils";
 
 export const usePosts = () => {
   const {
-    result,
+    data: result,
     isLoading,
     isError,
     isSuccess,
-    fetch: loadUsers,
-  } = useApi("blog-posts.json");
+  } = useQuery("posts", async () => {
+    const response = await API.instance.get("blog-posts.json");
+    return response.data;
+  });
 
-  return { result, isLoading, isError, isSuccess, loadUsers };
+  return { result, isLoading, isError, isSuccess };
 };
