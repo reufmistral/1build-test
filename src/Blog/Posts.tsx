@@ -9,7 +9,7 @@ export type PostProps = {
   posted: Date;
 };
 
-type PostsProps = {
+export type PostsProps = {
   posts: Array<PostProps>;
 };
 

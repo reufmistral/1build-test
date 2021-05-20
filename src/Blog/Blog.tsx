@@ -1,11 +1,11 @@
 import React from "react";
-import { Container, Row, Col, Alert } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import styled, { css } from "styled-components";
 import { FaLongArrowAltRight } from "react-icons/fa";
 
-import { AppLayout, Skeleton } from "lib/components";
-import { usePosts } from "./usePosts";
-import { Posts } from "./Posts";
+import { AppLayout } from "lib/components";
+import { BlogProvider } from "./BlogContext";
+import { BlogContent } from "./BlogContent";
 
 const Intro = styled.h2`
   font-family: Poppins;
@@ -51,43 +51,34 @@ const ArrowRight = styled(FaLongArrowAltRight)`
 `;
 
 const Blog = () => {
-  const { result, isLoading, isError, isSuccess } = usePosts();
-
   return (
-    <AppLayout>
-      <Container>
-        <Row>
-          <LeftContent xs={12} md={12} lg={5}>
-            <img src={`${process.env.PUBLIC_URL}/worker.png`} alt="Worker" />
-          </LeftContent>
-          <RightContent xs={12} md={12} lg={{ span: 6 }}>
-            <Col xs={12}>
-              <Intro>
-                Building is about getting around the obstacles that are
-                presented to you.
-              </Intro>
-            </Col>
-            <Col xs={12}>
-              <LearnMore>
-                Learn more <ArrowRight />
-              </LearnMore>
-            </Col>
-            <Col xs={12}>
-              {isError && (
-                <Alert variant="danger">
-                  An error occured, failed to retrieve data!
-                </Alert>
-              )}
-              {isSuccess && (
-                <Skeleton type="text" ready={!isLoading} firstLaunchOnly={true}>
-                  <Posts posts={result?.posts} />
-                </Skeleton>
-              )}
-            </Col>
-          </RightContent>
-        </Row>
-      </Container>
-    </AppLayout>
+    <BlogProvider>
+      <AppLayout>
+        <Container>
+          <Row>
+            <LeftContent xs={12} md={12} lg={5}>
+              <img src={`${process.env.PUBLIC_URL}/worker.png`} alt="Worker" />
+            </LeftContent>
+            <RightContent xs={12} md={12} lg={{ span: 6 }}>
+              <Col xs={12}>
+                <Intro>
+                  Building is about getting around the obstacles that are
+                  presented to you.
+                </Intro>
+              </Col>
+              <Col xs={12}>
+                <LearnMore>
+                  Learn more <ArrowRight />
+                </LearnMore>
+              </Col>
+              <Col xs={12}>
+                <BlogContent />
+              </Col>
+            </RightContent>
+          </Row>
+        </Container>
+      </AppLayout>
+    </BlogProvider>
   );
 };
 
