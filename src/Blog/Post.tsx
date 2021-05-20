@@ -60,6 +60,12 @@ type PostCompProps = {
 };
 
 export const Post: FC<PostCompProps> = ({ post, index }) => {
+  const date = new Date(post.posted).toLocaleDateString("en-US", {
+    day: "numeric",
+    month: "short",
+    year: "numeric",
+  });
+
   return (
     <RowItem>
       <Col xs={1}>
@@ -74,7 +80,7 @@ export const Post: FC<PostCompProps> = ({ post, index }) => {
           </Col>
           <Col style={{ marginTop: "-10px" }}>
             <Subtitle>
-              {new Date(post.posted).toLocaleDateString()}{" "}
+              {date}
               <Divider>&#183;</Divider> {post.author}
             </Subtitle>
           </Col>
