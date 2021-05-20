@@ -1,3 +1,8 @@
+# Project Structure
+
+The project structure is Feature oriented. For every feature (Blog, Services, etc.) a dedicated folder is created.
+There is also `lib` folder, which is the container for all the "common" stuff (common components, hooks, etc.)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
